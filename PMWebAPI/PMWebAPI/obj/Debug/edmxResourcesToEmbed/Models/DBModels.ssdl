@@ -1,0 +1,170 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ProjectMgmtDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ParentTask">
+    <Key>
+      <PropertyRef Name="ParentTaskID" />
+    </Key>
+    <Property Name="ParentTaskID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ParentTaskName" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Project">
+    <Key>
+      <PropertyRef Name="ProjectID" />
+    </Key>
+    <Property Name="ProjectID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProjectName" Type="varchar" MaxLength="50" />
+    <Property Name="StartDate" Type="date" />
+    <Property Name="EndDate" Type="date" />
+    <Property Name="Priority" Type="int" />
+    <Property Name="UserID" Type="int" />
+  </EntityType>
+  <EntityType Name="Task">
+    <Key>
+      <PropertyRef Name="TaskID" />
+    </Key>
+    <Property Name="TaskID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TaskName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ProjectID" Type="int" Nullable="false" />
+    <Property Name="ParentTaskID" Type="int" />
+    <Property Name="Priority" Type="int" Nullable="false" />
+    <Property Name="StartDate" Type="date" Nullable="false" />
+    <Property Name="EndDate" Type="date" Nullable="false" />
+    <Property Name="Status" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="UserID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="LastName" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'ProjectMgmtDB.dbo.CompletedTaskCountVW' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="CompletedTaskCountVW">
+    <Key>
+      <PropertyRef Name="ProjectID" />
+    </Key>
+    <Property Name="ProjectID" Type="int" Nullable="false" />
+    <Property Name="CompletedTask" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'ProjectMgmtDB.dbo.ProjectTaskView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="ProjectTaskView">
+    <Key>
+      <PropertyRef Name="ProjectID" />
+    </Key>
+    <Property Name="ProjectID" Type="int" Nullable="false" />
+    <Property Name="TaskCount" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'ProjectMgmtDB.dbo.ProjectVW' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="ProjectVW">
+    <Key>
+      <PropertyRef Name="ProjectID" />
+    </Key>
+    <Property Name="ProjectID" Type="int" Nullable="false" />
+    <Property Name="ProjectName" Type="varchar" MaxLength="50" />
+    <Property Name="StartDate" Type="date" />
+    <Property Name="EndDate" Type="date" />
+    <Property Name="Priority" Type="int" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="TaskCount" Type="int" />
+    <Property Name="CompletedTask" Type="int" />
+  </EntityType>
+  <Association Name="FK_Project_User">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Project" Type="Self.Project" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Project">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Task_ParentTask">
+    <End Role="ParentTask" Type="Self.ParentTask" Multiplicity="0..1" />
+    <End Role="Task" Type="Self.Task" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ParentTask">
+        <PropertyRef Name="ParentTaskID" />
+      </Principal>
+      <Dependent Role="Task">
+        <PropertyRef Name="ParentTaskID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Task_Project">
+    <End Role="Project" Type="Self.Project" Multiplicity="1" />
+    <End Role="Task" Type="Self.Task" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Project">
+        <PropertyRef Name="ProjectID" />
+      </Principal>
+      <Dependent Role="Task">
+        <PropertyRef Name="ProjectID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Task_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Task" Type="Self.Task" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Task">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ProjectMgmtDBModelStoreContainer">
+    <EntitySet Name="ParentTask" EntityType="Self.ParentTask" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Project" EntityType="Self.Project" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Task" EntityType="Self.Task" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CompletedTaskCountVW" EntityType="Self.CompletedTaskCountVW" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [CompletedTaskCountVW].[ProjectID] AS [ProjectID], 
+    [CompletedTaskCountVW].[CompletedTask] AS [CompletedTask]
+    FROM [dbo].[CompletedTaskCountVW] AS [CompletedTaskCountVW]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="ProjectTaskView" EntityType="Self.ProjectTaskView" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [ProjectTaskView].[ProjectID] AS [ProjectID], 
+    [ProjectTaskView].[TaskCount] AS [TaskCount]
+    FROM [dbo].[ProjectTaskView] AS [ProjectTaskView]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="ProjectVW" EntityType="Self.ProjectVW" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [ProjectVW].[ProjectID] AS [ProjectID], 
+    [ProjectVW].[ProjectName] AS [ProjectName], 
+    [ProjectVW].[StartDate] AS [StartDate], 
+    [ProjectVW].[EndDate] AS [EndDate], 
+    [ProjectVW].[Priority] AS [Priority], 
+    [ProjectVW].[UserID] AS [UserID], 
+    [ProjectVW].[TaskCount] AS [TaskCount], 
+    [ProjectVW].[CompletedTask] AS [CompletedTask]
+    FROM [dbo].[ProjectVW] AS [ProjectVW]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_Project_User" Association="Self.FK_Project_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="Project" EntitySet="Project" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Task_ParentTask" Association="Self.FK_Task_ParentTask">
+      <End Role="ParentTask" EntitySet="ParentTask" />
+      <End Role="Task" EntitySet="Task" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Task_Project" Association="Self.FK_Task_Project">
+      <End Role="Project" EntitySet="Project" />
+      <End Role="Task" EntitySet="Task" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Task_User" Association="Self.FK_Task_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="Task" EntitySet="Task" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

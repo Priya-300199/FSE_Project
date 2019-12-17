@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="7940d54827974c42a0863e0266540570" Name="Diagram1">
+        <EntityTypeShape EntityType="ProjectMgmtDBModel.ParentTask" Width="1.5" PointX="3" PointY="5.875" />
+        <EntityTypeShape EntityType="ProjectMgmtDBModel.Project" Width="1.5" PointX="3" PointY="1.375" />
+        <EntityTypeShape EntityType="ProjectMgmtDBModel.Task" Width="1.5" PointX="5.25" PointY="1" />
+        <EntityTypeShape EntityType="ProjectMgmtDBModel.User" Width="1.5" PointX="0.75" PointY="1.625" />
+        <EntityTypeShape EntityType="ProjectMgmtDBModel.CompletedTaskCountVW" Width="1.5" PointX="5.75" PointY="5.75" />
+        <EntityTypeShape EntityType="ProjectMgmtDBModel.ProjectTaskView" Width="1.5" PointX="7.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ProjectMgmtDBModel.ProjectVW" Width="1.5" PointX="7.75" PointY="3.75" />
+        <AssociationConnector Association="ProjectMgmtDBModel.FK_Task_ParentTask" />
+        <AssociationConnector Association="ProjectMgmtDBModel.FK_Project_User" />
+        <AssociationConnector Association="ProjectMgmtDBModel.FK_Task_Project" />
+        <AssociationConnector Association="ProjectMgmtDBModel.FK_Task_User" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

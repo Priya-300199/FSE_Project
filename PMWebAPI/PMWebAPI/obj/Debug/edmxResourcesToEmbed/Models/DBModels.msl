@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ProjectMgmtDBModelStoreContainer" CdmEntityContainer="ProjectMgmtDBModels">
+    <EntitySetMapping Name="ParentTasks">
+      <EntityTypeMapping TypeName="ProjectMgmtDBModel.ParentTask">
+        <MappingFragment StoreEntitySet="ParentTask">
+          <ScalarProperty Name="ParentTaskName" ColumnName="ParentTaskName" />
+          <ScalarProperty Name="ParentTaskID" ColumnName="ParentTaskID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Projects">
+      <EntityTypeMapping TypeName="ProjectMgmtDBModel.Project">
+        <MappingFragment StoreEntitySet="Project">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="Priority" ColumnName="Priority" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="ProjectName" ColumnName="ProjectName" />
+          <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tasks">
+      <EntityTypeMapping TypeName="ProjectMgmtDBModel.Task">
+        <MappingFragment StoreEntitySet="Task">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="Priority" ColumnName="Priority" />
+          <ScalarProperty Name="ParentTaskID" ColumnName="ParentTaskID" />
+          <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+          <ScalarProperty Name="TaskName" ColumnName="TaskName" />
+          <ScalarProperty Name="TaskID" ColumnName="TaskID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="ProjectMgmtDBModel.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CompletedTaskCountVWs">
+      <EntityTypeMapping TypeName="ProjectMgmtDBModel.CompletedTaskCountVW">
+        <MappingFragment StoreEntitySet="CompletedTaskCountVW">
+          <ScalarProperty Name="CompletedTask" ColumnName="CompletedTask" />
+          <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProjectTaskViews">
+      <EntityTypeMapping TypeName="ProjectMgmtDBModel.ProjectTaskView">
+        <MappingFragment StoreEntitySet="ProjectTaskView">
+          <ScalarProperty Name="TaskCount" ColumnName="TaskCount" />
+          <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProjectVWs">
+      <EntityTypeMapping TypeName="ProjectMgmtDBModel.ProjectVW">
+        <MappingFragment StoreEntitySet="ProjectVW">
+          <ScalarProperty Name="CompletedTask" ColumnName="CompletedTask" />
+          <ScalarProperty Name="TaskCount" ColumnName="TaskCount" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="Priority" ColumnName="Priority" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="ProjectName" ColumnName="ProjectName" />
+          <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
