@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ProjectMgmtDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="ProjectMgmtDBModels" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ParentTasks" EntityType="ProjectMgmtDBModel.ParentTask" />
+    <EntitySet Name="Projects" EntityType="ProjectMgmtDBModel.Project" />
+    <EntitySet Name="Tasks" EntityType="ProjectMgmtDBModel.Task" />
+    <EntitySet Name="Users" EntityType="ProjectMgmtDBModel.User" />
+    <EntitySet Name="CompletedTaskCountVWs" EntityType="ProjectMgmtDBModel.CompletedTaskCountVW" />
+    <EntitySet Name="ProjectTaskViews" EntityType="ProjectMgmtDBModel.ProjectTaskView" />
+    <EntitySet Name="ProjectVWs" EntityType="ProjectMgmtDBModel.ProjectVW" />
+    <AssociationSet Name="FK_Task_ParentTask" Association="ProjectMgmtDBModel.FK_Task_ParentTask">
+      <End Role="ParentTask" EntitySet="ParentTasks" />
+      <End Role="Task" EntitySet="Tasks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Project_User" Association="ProjectMgmtDBModel.FK_Project_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Project" EntitySet="Projects" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Task_Project" Association="ProjectMgmtDBModel.FK_Task_Project">
+      <End Role="Project" EntitySet="Projects" />
+      <End Role="Task" EntitySet="Tasks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Task_User" Association="ProjectMgmtDBModel.FK_Task_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Task" EntitySet="Tasks" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="ParentTask">
+    <Key>
+      <PropertyRef Name="ParentTaskID" />
+    </Key>
+    <Property Name="ParentTaskID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ParentTaskName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Tasks" Relationship="ProjectMgmtDBModel.FK_Task_ParentTask" FromRole="ParentTask" ToRole="Task" />
+  </EntityType>
+  <EntityType Name="Project">
+    <Key>
+      <PropertyRef Name="ProjectID" />
+    </Key>
+    <Property Name="ProjectID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProjectName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="StartDate" Type="DateTime" Precision="0" />
+    <Property Name="EndDate" Type="DateTime" Precision="0" />
+    <Property Name="Priority" Type="Int32" />
+    <Property Name="UserID" Type="Int32" />
+    <NavigationProperty Name="User" Relationship="ProjectMgmtDBModel.FK_Project_User" FromRole="Project" ToRole="User" />
+    <NavigationProperty Name="Tasks" Relationship="ProjectMgmtDBModel.FK_Task_Project" FromRole="Project" ToRole="Task" />
+  </EntityType>
+  <EntityType Name="Task">
+    <Key>
+      <PropertyRef Name="TaskID" />
+    </Key>
+    <Property Name="TaskID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TaskName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ProjectID" Type="Int32" Nullable="false" />
+    <Property Name="ParentTaskID" Type="Int32" />
+    <Property Name="Priority" Type="Int32" Nullable="false" />
+    <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Status" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ParentTask" Relationship="ProjectMgmtDBModel.FK_Task_ParentTask" FromRole="Task" ToRole="ParentTask" />
+    <NavigationProperty Name="Project" Relationship="ProjectMgmtDBModel.FK_Task_Project" FromRole="Task" ToRole="Project" />
+    <NavigationProperty Name="User" Relationship="ProjectMgmtDBModel.FK_Task_User" FromRole="Task" ToRole="User" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Projects" Relationship="ProjectMgmtDBModel.FK_Project_User" FromRole="User" ToRole="Project" />
+    <NavigationProperty Name="Tasks" Relationship="ProjectMgmtDBModel.FK_Task_User" FromRole="User" ToRole="Task" />
+  </EntityType>
+  <EntityType Name="CompletedTaskCountVW">
+    <Key>
+      <PropertyRef Name="ProjectID" />
+    </Key>
+    <Property Name="ProjectID" Type="Int32" Nullable="false" />
+    <Property Name="CompletedTask" Type="Int32" />
+  </EntityType>
+  <EntityType Name="ProjectTaskView">
+    <Key>
+      <PropertyRef Name="ProjectID" />
+    </Key>
+    <Property Name="ProjectID" Type="Int32" Nullable="false" />
+    <Property Name="TaskCount" Type="Int32" />
+  </EntityType>
+  <EntityType Name="ProjectVW">
+    <Key>
+      <PropertyRef Name="ProjectID" />
+    </Key>
+    <Property Name="ProjectID" Type="Int32" Nullable="false" />
+    <Property Name="ProjectName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="StartDate" Type="DateTime" Precision="0" />
+    <Property Name="EndDate" Type="DateTime" Precision="0" />
+    <Property Name="Priority" Type="Int32" />
+    <Property Name="UserID" Type="Int32" />
+    <Property Name="TaskCount" Type="Int32" />
+    <Property Name="CompletedTask" Type="Int32" />
+  </EntityType>
+  <Association Name="FK_Task_ParentTask">
+    <End Type="ProjectMgmtDBModel.ParentTask" Role="ParentTask" Multiplicity="0..1" />
+    <End Type="ProjectMgmtDBModel.Task" Role="Task" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ParentTask">
+        <PropertyRef Name="ParentTaskID" />
+      </Principal>
+      <Dependent Role="Task">
+        <PropertyRef Name="ParentTaskID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Project_User">
+    <End Type="ProjectMgmtDBModel.User" Role="User" Multiplicity="0..1" />
+    <End Type="ProjectMgmtDBModel.Project" Role="Project" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Project">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Task_Project">
+    <End Type="ProjectMgmtDBModel.Project" Role="Project" Multiplicity="1" />
+    <End Type="ProjectMgmtDBModel.Task" Role="Task" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Project">
+        <PropertyRef Name="ProjectID" />
+      </Principal>
+      <Dependent Role="Task">
+        <PropertyRef Name="ProjectID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Task_User">
+    <End Type="ProjectMgmtDBModel.User" Role="User" Multiplicity="1" />
+    <End Type="ProjectMgmtDBModel.Task" Role="Task" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Task">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
