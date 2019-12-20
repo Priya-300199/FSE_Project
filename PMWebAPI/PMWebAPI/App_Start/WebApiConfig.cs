@@ -25,12 +25,7 @@ namespace PMWebAPI
                 defaults: new { id = RouteParameter.Optional }
             );
 
-            config.Formatters.Remove(config.Formatters.XmlFormatter);
-            config.Formatters.JsonFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("application/json"));
-
-           var json = config.Formatters.JsonFormatter;
-           json.SerializerSettings.PreserveReferencesHandling = Newtonsoft.Json.PreserveReferencesHandling.Objects;
-           config.Formatters.Remove(config.Formatters.XmlFormatter);
+          
 
         }
     }

@@ -82,7 +82,6 @@ C:\Users\Admin\source\repos\ProjectManager_API\PMWebAPI\PMWebAPI\bin\System.Web.
 C:\Users\Admin\source\repos\ProjectManager_API\PMWebAPI\PMWebAPI\bin\System.Web.WebPages.Razor.xml
 C:\Users\Admin\source\repos\ProjectManager_API\PMWebAPI\PMWebAPI\bin\Antlr3.Runtime.pdb
 C:\Users\Admin\source\repos\ProjectManager_API\PMWebAPI\PMWebAPI\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\Admin\source\repos\ProjectManager_API\PMWebAPI\PMWebAPI\obj\Release\PMWebAPI.csprojAssemblyReference.cache
 C:\Users\Admin\source\repos\ProjectManager_API\PMWebAPI\PMWebAPI\obj\Release\PMWebAPI.csproj.CoreCompileInputs.cache
 C:\Users\Admin\source\repos\ProjectManager_API\PMWebAPI\PMWebAPI\obj\Release\PMWebAPI.csproj.CopyComplete
 C:\Users\Admin\source\repos\ProjectManager_API\PMWebAPI\PMWebAPI\obj\Release\PMWebAPI.dll
