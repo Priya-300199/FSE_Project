@@ -29,8 +29,9 @@ namespace PMWebAPI
             config.Formatters.JsonFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("application/json"));
 
            var json = config.Formatters.JsonFormatter;
-    json.SerializerSettings.PreserveReferencesHandling =                Newtonsoft.Json.PreserveReferencesHandling.Objects;
- config.Formatters.Remove(config.Formatters.XmlFormatter);
+           json.SerializerSettings.PreserveReferencesHandling = Newtonsoft.Json.PreserveReferencesHandling.Objects;
+           config.Formatters.Remove(config.Formatters.XmlFormatter);
+
         }
     }
 }
