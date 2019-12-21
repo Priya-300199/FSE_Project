@@ -12,7 +12,7 @@ namespace PMWebAPI
         public static void Register(HttpConfiguration config)
         {
             //Enable CORS
-            config.EnableCors(new EnableCorsAttribute(origins: "http://localhost", headers: "*", methods: "*"));
+            config.EnableCors(new EnableCorsAttribute(origins: "http://localhost/ProjectManager/index.html", headers: "*", methods: "*"));
 
             // Web API configuration and services
 
