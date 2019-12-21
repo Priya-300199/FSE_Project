@@ -7,11 +7,13 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using System.Web.Http.Description;
 using PMWebAPI.Models;
 
 namespace PMWebAPI.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class TasksController : ApiController
     {
         private ProjectMgmtDBModels db = new ProjectMgmtDBModels();
