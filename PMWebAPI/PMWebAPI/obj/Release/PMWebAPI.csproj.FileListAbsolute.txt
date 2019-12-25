@@ -53,6 +53,7 @@ C:\Users\Admin\source\repos\ProjectManager_API\PMWebAPI\PMWebAPI\bin\EntityFrame
 C:\Users\Admin\source\repos\ProjectManager_API\PMWebAPI\PMWebAPI\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 C:\Users\Admin\source\repos\ProjectManager_API\PMWebAPI\PMWebAPI\bin\Microsoft.Web.Infrastructure.dll
 C:\Users\Admin\source\repos\ProjectManager_API\PMWebAPI\PMWebAPI\bin\Newtonsoft.Json.dll
+C:\Users\Admin\source\repos\ProjectManager_API\PMWebAPI\PMWebAPI\bin\nunit.framework.dll
 C:\Users\Admin\source\repos\ProjectManager_API\PMWebAPI\PMWebAPI\bin\System.Net.Http.Formatting.dll
 C:\Users\Admin\source\repos\ProjectManager_API\PMWebAPI\PMWebAPI\bin\System.Web.Cors.dll
 C:\Users\Admin\source\repos\ProjectManager_API\PMWebAPI\PMWebAPI\bin\System.Web.Helpers.dll
@@ -68,6 +69,8 @@ C:\Users\Admin\source\repos\ProjectManager_API\PMWebAPI\PMWebAPI\bin\System.Web.
 C:\Users\Admin\source\repos\ProjectManager_API\PMWebAPI\PMWebAPI\bin\WebGrease.dll
 C:\Users\Admin\source\repos\ProjectManager_API\PMWebAPI\PMWebAPI\bin\EntityFramework.xml
 C:\Users\Admin\source\repos\ProjectManager_API\PMWebAPI\PMWebAPI\bin\EntityFramework.SqlServer.xml
+C:\Users\Admin\source\repos\ProjectManager_API\PMWebAPI\PMWebAPI\bin\nunit.framework.pdb
+C:\Users\Admin\source\repos\ProjectManager_API\PMWebAPI\PMWebAPI\bin\nunit.framework.xml
 C:\Users\Admin\source\repos\ProjectManager_API\PMWebAPI\PMWebAPI\bin\System.Net.Http.Formatting.xml
 C:\Users\Admin\source\repos\ProjectManager_API\PMWebAPI\PMWebAPI\bin\System.Web.Http.xml
 C:\Users\Admin\source\repos\ProjectManager_API\PMWebAPI\PMWebAPI\bin\System.Web.Http.Cors.xml
@@ -82,7 +85,6 @@ C:\Users\Admin\source\repos\ProjectManager_API\PMWebAPI\PMWebAPI\bin\System.Web.
 C:\Users\Admin\source\repos\ProjectManager_API\PMWebAPI\PMWebAPI\bin\System.Web.WebPages.Razor.xml
 C:\Users\Admin\source\repos\ProjectManager_API\PMWebAPI\PMWebAPI\bin\Antlr3.Runtime.pdb
 C:\Users\Admin\source\repos\ProjectManager_API\PMWebAPI\PMWebAPI\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\Admin\source\repos\ProjectManager_API\PMWebAPI\PMWebAPI\obj\Release\PMWebAPI.csprojAssemblyReference.cache
 C:\Users\Admin\source\repos\ProjectManager_API\PMWebAPI\PMWebAPI\obj\Release\PMWebAPI.csproj.CoreCompileInputs.cache
 C:\Users\Admin\source\repos\ProjectManager_API\PMWebAPI\PMWebAPI\obj\Release\PMWebAPI.csproj.CopyComplete
 C:\Users\Admin\source\repos\ProjectManager_API\PMWebAPI\PMWebAPI\obj\Release\PMWebAPI.dll
